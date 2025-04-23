@@ -1,8 +1,9 @@
-  class QuickSort < Sorting
+  class QuickSort < Algorithm
     def exec(array, first, last)
       if first < last
+        dbg_1 "array at start: #{dbg_ar(array, first, last)}"
         j = partition(array, first, last)
-        dbg 'array changed to:' + array.inspect
+        dbg 'array changed to:' + dbg_ar(array, first, last)
         dbg_2 "pivot on AR[#{j}](#{array[j]})"
         puts '============'
         exec(array, first, j-1)
@@ -17,11 +18,13 @@
       i = first
       while i < last
         if array[i].to_i <= pivot.to_i
+          dbg_4 "#{array[i]} <= #{pivot} = true"
+          dbg_5 "SWAP(#{array[i]},#{array[pIndex]})"
           array[i], array[pIndex] = array[pIndex], array[i]
           pIndex += 1
-          dbg_3 'ARRAY partition is:' + array.inspect
+          dbg_3 'ARRAY partition is:' + dbg_ar(array,first,last) + " pivot:#{pIndex}"
         end
-      i += 1
+        i += 1
       end
       array[pIndex], array[last] = array[last], array[pIndex]
       return pIndex

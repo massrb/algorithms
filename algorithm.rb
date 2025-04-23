@@ -1,6 +1,6 @@
 
 
-class Sorting
+class Algorithm
 
   def initialize(dbg_level)
     @dbg_level = dbg_level
@@ -8,6 +8,18 @@ class Sorting
 
   def dbg(str, lev=0)
     puts str if lev <= @dbg_level
+  end
+
+  def dbg_ar(ar, first, last)
+    str = "["
+    str += '.. ' if first > 0
+    str += "#{ar[first..last].join(', ')}"
+    str += " .." if last + 1 < ar.length
+    str += ']'
+    if first != 0 || last + 1 < ar.length
+      str += " [#{first}..#{last}]"
+    end
+    str
   end
 
   def method_missing(m, *args, &block)
