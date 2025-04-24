@@ -6,10 +6,6 @@ class Algorithm
     @dbg_level = dbg_level
   end
 
-  def set_dbg(dbg_level)
-    @dbg_level = dbg_level
-  end
-
   def dbg(str, level=0)
     puts str if level <= @dbg_level
   end
