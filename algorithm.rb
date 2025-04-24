@@ -6,11 +6,16 @@ class Algorithm
     @dbg_level = dbg_level
   end
 
-  def dbg(str, lev=0)
-    puts str if lev <= @dbg_level
+  def set_dbg(dbg_level)
+    @dbg_level = dbg_level
   end
 
-  def dbg_ar(ar, first, last)
+  def dbg(str, level=0)
+    puts str if level <= @dbg_level
+  end
+
+  def dbg_ar(ar, first=0, last=nil)
+    last = ar.length - 1 if last.nil?
     str = "["
     str += '.. ' if first > 0
     str += "#{ar[first..last].join(', ')}"
