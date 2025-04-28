@@ -7,8 +7,7 @@ class MergeSort < Algorithm
       return array
     end
 
-    array_size   = array.size
-    half_of_size = (array_size / 2).round
+    half_of_size = (array.size / 2)
 
     dbg_7("half of size #{half_of_size}")
     left_array  = array.take(half_of_size)
@@ -24,6 +23,7 @@ class MergeSort < Algorithm
 
   # This then creates a new array, loops through the left/right arrays and places the lowest number into the array. 
   def merge(left_array, right_array)
+    dbg_7 "merge #{left_array} and #{right_array}"
     if right_array.empty?
       return left_array # We have nothing to compare. Left wins.
     end

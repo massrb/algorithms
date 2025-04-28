@@ -3,7 +3,7 @@ require_relative '../algorithm'
 require_relative '../sorting/quick_sort'
 require_relative '../sorting/merge_sort'
 
-RSpec.describe "Sort test", :type => :request do
+RSpec.describe "Sort test" do
   
   let(:input) {  [10, 4, 8, 3, 9, 2, 22, 33, 22, 7] }
   let(:output) { [2, 3, 4, 7, 8, 9, 10, 22, 22, 33] }
@@ -35,11 +35,19 @@ RSpec.describe "Sort test", :type => :request do
 
   describe "merge sorting" do
     let(:sorter) { MergeSort.new(7) }
+    let(:left_array) { [1, 5, 9, 11] }
+    let (:right_array) { [2, 6, 8, 12 ]}
 
     it 'can sort' do
       result = sorter.exec(input)
       expect(result).to eq(output)
     end
+
+    it 'can merge' do
+      result = sorter.merge(left_array, right_array)
+      expect(result).to eq([1, 2, 5, 6, 8, 9, 11, 12])
+    end
+
   end
 
 end
