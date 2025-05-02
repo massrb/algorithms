@@ -1,3 +1,6 @@
+
+# linearirithimic complexity
+# O(n log(n))
 class MergeSort < Algorithm
   # Break's the array down into two numbers (number A and number B) and sorts them.
   def exec(array, depth=0)

@@ -39,6 +39,18 @@ RSpec.describe "Graph test" do
   "F" => ["C"]
 }}
 
+ # binary search tree
+ # 
+ # 10
+ #  /  \
+ # 5   20
+ #    /  \
+ #  15   30
+ #      /  \
+ #    25   35
+
+let(:bst) {}
+
   it 'has breadth first search' do
   	expect(bfs(graph, "A")).to eq('ABCDE')
   end
