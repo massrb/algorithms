@@ -2,6 +2,8 @@
 # linearirithimic complexity
 # O(n log(n))
 class MergeSort < Algorithm
+  #
+  # O(n log n)
   # Break's the array down into two numbers (number A and number B) and sorts them.
   def exec(array, depth=0)
     dbg("=======================")
@@ -26,6 +28,13 @@ class MergeSort < Algorithm
 
   # This then creates a new array, loops through the left/right arrays and places the lowest number into the array. 
   def merge(left_array, right_array)
+    # let n = left_array.length + right_array.length
+    # Then:
+    # There are n recursive calls
+    # Each call does constant work: comparison, shifting, and a single concat
+    #
+    # O(n) complexity
+    #
     dbg_7 "merge #{left_array} and #{right_array}"
     if right_array.empty?
       return left_array # We have nothing to compare. Left wins.

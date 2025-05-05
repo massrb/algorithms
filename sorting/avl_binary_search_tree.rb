@@ -8,6 +8,14 @@ class Node
   end
 end
 
+# AVL tree is a type of self-balancing binary search tree (BST) 
+# named after its inventors Adelson-Velsky and Landis.
+# 
+# In a regular binary search tree, inserting or deleting nodes 
+# can make the tree unbalanced, which hurts performance.
+# An AVL tree automatically balances itself after insertions 
+# and deletions to maintain efficient operations.
+
 class AVLTree
   def insert(root, value)
     return Node.new(value) if root.nil?
@@ -95,7 +103,7 @@ class AVLTree
 end
 
 # Tree sort using AVL
-def tree_sort(arr)
+def avl_tree_sort(arr)
   tree = AVLTree.new
   root = nil
 
