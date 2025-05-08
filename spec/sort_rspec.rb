@@ -5,7 +5,7 @@ require_relative '../sorting/merge_sort'
 require_relative '../sorting/bubble_sort'
 require_relative '../sorting/avl_binary_search_tree'
 require_relative '../sorting/binary_search'
-
+require_relative '../sorting/balanced_split'
 
 RSpec.describe "Sort test" do
   
@@ -68,6 +68,13 @@ RSpec.describe "Sort test" do
 
   it 'can build an AVL binary search tree' do
     expect(avl_tree_sort(unsorted_array)).to eq(sorted_array)
+  end
+
+  it 'does a balanced split' do
+    expect(balanced_split_exists([1, 5, 7, 1])).to eq(true)
+    expect(balanced_split_exists([12, 7, 6, 7, 6])).to eq(false)
+    expect(balanced_split_exists([1, 1, 3, 3, 6, 6])).to eq(false)
+    
   end
 
 end

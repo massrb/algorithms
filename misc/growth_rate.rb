@@ -15,10 +15,7 @@ def get_billion_users(growth_rates)
 	count = 10
 	while !done
 		day += 1
-		users = 0
-		growth_rates.each do |rate|
-			users += rate**day
-		end
+		users = growth_rates.sum{|rate| rate**day}
 		done = users >= 1_000_000_000
 	end
 	day

@@ -28,6 +28,7 @@ RSpec.describe "misc" do
 
   it 'does growth rates' do
     expect(get_billion_users([1.5])).to eq(52)
+    expect(get_billion_users([1.1, 1.2, 1.3])).to eq(79)
   end
 
 end
