@@ -18,7 +18,7 @@ The first and last brackets of the sequence are matching, and the portion of the
 
 =end
 
-def balanced(str)
+def balanced?(str)
   stack = []
   for i in 0...str.length
   	if ['{','[','('].include?(str[i])
@@ -35,7 +35,22 @@ def balanced(str)
   		end
   	end
   end
-  return true
+  return stack.empty?
 
 end
 
+
+def improved_balanced?(str)
+  stack = []
+  pairs = { ')' => '(', '}' => '{', ']' => '[' }
+
+  str.each_char do |char|
+    if pairs.values.include?(char)
+      stack.push(char)
+    elsif pairs.keys.include?(char)
+      return false if stack.pop != pairs[char]
+    end
+  end
+
+  stack.empty?
+end

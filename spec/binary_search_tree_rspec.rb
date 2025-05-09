@@ -13,7 +13,8 @@ RSpec.describe "Sort test" do
     [22, 'donkeys'],
     [33, 'people'],
     [22, 'letters'],
-    [7, 'birds']] }
+    [7, 'birds'],
+    [6, 'fish']] }
 
   it 'has a working binary search tree' do
     tree = build_binary_tree(unsorted_array)
@@ -24,6 +25,8 @@ RSpec.describe "Sort test" do
 
     expect(tree.max_imbalance(tree.root)).to eq(2)
     tree.print_tree(tree.root)
+    puts '------------'
+    expect(tree.visible_left_nodes.map{|node| node.key}).to eq([10, 4, 3, 2, 6])
   end
 
 end

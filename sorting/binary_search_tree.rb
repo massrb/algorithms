@@ -1,12 +1,13 @@
 # Class to define a node in the binary tree
 class Node
-  attr_accessor :data, :left, :right, :key
+  attr_accessor :data, :left, :right, :key, :level
 
-  def initialize(key, data)
+  def initialize(key, data, level=0)
     @key = key
     @data = data
     @left = nil
     @right = nil
+    @level = level
   end
 end
 
@@ -29,15 +30,16 @@ class BinaryTree
 
   # Recursive insertion without balancing
   def insert_recursively(current_node, key, data)
+    next_level = current_node.level + 1
     if key < current_node.key
       if current_node.left.nil?
-        current_node.left = Node.new(key, data)
+        current_node.left = Node.new(key, data, next_level)
       else
         insert_recursively(current_node.left, key, data)
       end
     else
       if current_node.right.nil?
-        current_node.right = Node.new(key, data)
+        current_node.right = Node.new(key, data, next_level)
       else
         insert_recursively(current_node.right, key, data)
       end
@@ -73,6 +75,36 @@ class BinaryTree
       end  
     end
     result
+  end
+
+  def print_node(node)
+    puts node.key
+  end
+
+  def visible_left_nodes(node = @root, order=0)
+    # puts 'vis:' + node.inspect
+    cur = node
+    visible_left = [[cur.level, order, node]]
+    visible_left += visible_left_nodes(cur.left, order+1) if cur.left
+    visible_left += visible_left_nodes(cur.right, order+2) if cur.right
+    if node == @root
+      lev = 0
+      nodes = []
+      done = false
+      while !done
+        this_level = visible_left.find_all{|level, order, node| level == lev}
+                     .min_by{|level, order, node| [level, order]}
+        lev+=1
+        if !this_level
+          done = true
+        else
+          nodes += [this_level]
+        end
+      end
+      nodes.map{|level, order, node| node}
+    else  
+      visible_left
+    end  
   end
 
   def print_tree(node, prefix = "", is_left = true)
