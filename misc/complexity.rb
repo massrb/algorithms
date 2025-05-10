@@ -5,7 +5,7 @@
 # O(1) - constant 
 # O(log n) - logarithmic
 # O(n) - linear
-# O(n log n) - linearithmic
+# O(n log n) - linearithmic - merge sort
 # O(n^2) - quadratic
 # O(n^3) - cubic
 # O(2^n) - exponential
@@ -74,7 +74,7 @@ end
 
 def memoized_fib(n, memo={})
 	# when recursion is slow, look into memoization
-	# O(k) - k represents the height of the recursion call stack
+	# linear O(k) - k represents the height of the recursion call stack
 	# call stack no longer branches out like a tree
 	# as in non memoized version
 	if (n==0 || n==1)

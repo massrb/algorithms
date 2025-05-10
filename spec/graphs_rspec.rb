@@ -1,5 +1,6 @@
 
 require_relative '../graphs/graph'
+require_relative '../graphs/min_permutations'
 
 RSpec.describe "Graph test" do
 
@@ -57,6 +58,10 @@ let(:bst) {}
 
   it 'has depth first search' do
   	expect(dfs(graph2, "A")).to eq('ABDECF')
+  end
+
+  it 'does minimum permutations' do
+    expect(min_operations([3, 1, 2])).to eq(2)
   end
 
 end
