@@ -1,6 +1,6 @@
 
 require_relative '../arrays/signature_cycle'
-require_relative '../arrays/monotonic_subarrays'
+require_relative '../arrays/contiguous_subarrays'
 require_relative '../arrays/spiral_array'
 
 RSpec.describe "Array test" do
@@ -51,12 +51,22 @@ RSpec.describe "Array test" do
   it 'can do cycles' do
     expect(find_signature_counts([2, 1])).to eq([2, 2])
     expect(find_signature_counts([1, 2, 3, 4])).to eq([1, 1, 1, 1])
+    # 3 cycles for each:
+    # #1 passes to 2
+    # #2 passes to #3
+    # #3 passes to 1
     expect(find_signature_counts([2, 3, 1])).to eq([3, 3, 3])
     expect(find_signature_counts([3, 4, 1, 2])).to eq([2,2,2,2])
   end
 
-  it 'can do monotonic subarrays' do
-    expect(count_subarrays([3, 4, 1, 6, 2])).to eq([1, 3, 1, 5, 1])
+  describe 'handles contiguous subarrays' do
+    let(:counter) { ContiguousSubarrays.new() }
+    it 'counts subarrays' do
+      expect(counter.count_subarrays([3, 4, 1, 6, 2])).to eq([1, 3, 1, 5, 1])
+      expect(counter.count_subarrays([7, 2, 3, 4, 1, 6, 2])).to eq([7, 1, 2, 4, 1, 6, 1])
+      expect(counter.count_subarrays([8, 7, 6, 5, 12, 1])).to eq([4, 3, 2, 1, 6, 1])
+      expect(counter.count_subarrays([8, 7, 6, 5, 12, 1])).to eq([4, 3, 2, 1, 6, 1])
+    end
   end
 
   it 'can do spiral arrays' do
