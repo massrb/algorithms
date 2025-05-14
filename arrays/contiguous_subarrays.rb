@@ -15,7 +15,7 @@ These contiguous subarrays must either start from or end on index i.
 
 class ContiguousSubarrays
 
-  def count_subarrays(arr)
+  def self.count_subarrays(arr)
     up_result = count_up(arr)
     down_result = count_down(arr)
     # each sets result to [1,1,1,1,1]
@@ -24,7 +24,7 @@ class ContiguousSubarrays
     up_result.zip(down_result).map { |x, y| x + y - 1}
   end
 
-  def count_up(arr)
+  def self.count_up(arr)
     result = Array.new(arr.length, 1)
     stack = []
     (0...arr.length).each do |i|
@@ -55,7 +55,7 @@ class ContiguousSubarrays
     result
   end
 
-  def count_down(arr)
+  def self.count_down(arr)
     result = Array.new(arr.length, 1)
     stack = []
     n = arr.length

@@ -60,12 +60,23 @@ RSpec.describe "Array test" do
   end
 
   describe 'handles contiguous subarrays' do
-    let(:counter) { ContiguousSubarrays.new() }
+    let(:counter) { ContiguousSubarrays }
     it 'counts subarrays' do
       expect(counter.count_subarrays([3, 4, 1, 6, 2])).to eq([1, 3, 1, 5, 1])
       expect(counter.count_subarrays([7, 2, 3, 4, 1, 6, 2])).to eq([7, 1, 2, 4, 1, 6, 1])
+      expect(counter.count_up([7, 2, 3, 4, 1, 6, 2])).to eq([1, 1, 2, 3, 1, 5, 1])
+
       expect(counter.count_subarrays([8, 7, 6, 5, 12, 1])).to eq([4, 3, 2, 1, 6, 1])
-      expect(counter.count_subarrays([8, 7, 6, 5, 12, 1])).to eq([4, 3, 2, 1, 6, 1])
+      # 
+      # 12 and to it's left constitutes significant results
+      # when 12 is reached, the stack gets emptied
+      # index of 12 is 4 or 5 for 1 based
+      expect(counter.count_up([8, 7, 6, 5, 12, 1])).to eq([1, 1, 1, 1, 5, 1])
+      expect(counter.count_down([8, 7, 6, 5, 12, 1])).to eq([4, 3, 2, 1, 2, 1])
+    end
+
+    it 'has isolated example' do
+      expect(counter.count_up([7, 2, 3, 4, 1, 6, 2])).to eq([1, 1, 2, 3, 1, 5, 1])
     end
   end
 
