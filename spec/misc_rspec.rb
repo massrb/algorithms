@@ -4,6 +4,8 @@ require_relative '../misc/min_length_substr'
 require_relative '../misc/pair_sums'
 require_relative '../misc/revenue_milestones'
 require_relative '../misc/growth_rate'
+require_relative '../misc/look_and_say'
+
 
 RSpec.describe "misc" do
   it 'matches pairs' do
@@ -29,6 +31,10 @@ RSpec.describe "misc" do
   it 'does growth rates' do
     expect(get_billion_users([1.5])).to eq(52)
     expect(get_billion_users([1.1, 1.2, 1.3])).to eq(79)
+  end
+
+  it 'does look and say' do
+    print_look_and_say_seq(10)
   end
 
 end

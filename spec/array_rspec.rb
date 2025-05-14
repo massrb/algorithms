@@ -1,6 +1,7 @@
 
 require_relative '../arrays/signature_cycle'
 require_relative '../arrays/monotonic_subarrays'
+require_relative '../arrays/spiral_array'
 
 RSpec.describe "Array test" do
   
@@ -48,7 +49,6 @@ RSpec.describe "Array test" do
   end
 
   it 'can do cycles' do
-
     expect(find_signature_counts([2, 1])).to eq([2, 2])
     expect(find_signature_counts([1, 2, 3, 4])).to eq([1, 1, 1, 1])
     expect(find_signature_counts([2, 3, 1])).to eq([3, 3, 3])
@@ -57,6 +57,13 @@ RSpec.describe "Array test" do
 
   it 'can do monotonic subarrays' do
     expect(count_subarrays([3, 4, 1, 6, 2])).to eq([1, 3, 1, 5, 1])
+  end
+
+  it 'can do spiral arrays' do
+    expect(Spiral.gen_spiral(3)).to eq(
+         [[1, 2, 3], 
+          [8, 9, 4], 
+          [7, 6, 5]])
   end
 
 end

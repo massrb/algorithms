@@ -42,7 +42,7 @@ RSpec.describe "Graph test" do
 
  # binary search tree
  # 
- # 10
+ #   10
  #  /  \
  # 5   20
  #    /  \
