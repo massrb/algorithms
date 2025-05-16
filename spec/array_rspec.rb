@@ -52,9 +52,9 @@ RSpec.describe "Array test" do
     expect(find_signature_counts([2, 1])).to eq([2, 2])
     expect(find_signature_counts([1, 2, 3, 4])).to eq([1, 1, 1, 1])
     # 3 cycles for each:
-    # #1 passes to 2
-    # #2 passes to #3
-    # #3 passes to 1
+    # 1 passes to 2
+    # 2 passes to 3
+    # 3 passes to 1
     expect(find_signature_counts([2, 3, 1])).to eq([3, 3, 3])
     expect(find_signature_counts([3, 4, 1, 2])).to eq([2,2,2,2])
   end
