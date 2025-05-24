@@ -51,11 +51,11 @@ def find_signature_counts(arr)
       visited[current] = true
       current = arr[current] - 1  # convert to 0-based index
     end
-   puts "cycle:#{cycle}"
-   puts "visited:#{visited}"
-   cycle_length = cycle.length
-   cycle.each { |index| result[index] = cycle_length }
-   puts "result#{result}"
+    puts "cycle:#{cycle}"
+    puts "visited:#{visited}"
+    cycle_length = cycle.length
+    cycle.each { |index| result[index] = cycle_length }
+    puts "result#{result}"
   end
   puts "======================"
   result

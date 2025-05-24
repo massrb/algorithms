@@ -8,6 +8,12 @@ require_relative '../misc/look_and_say'
 
 
 RSpec.describe "misc" do
+
+  it 'works with comparitors' do
+    cmp = Proc.new { |a, b| a > b }
+    expect(cmp.call(2,1)).to eq(true)
+  end
+
   it 'matches pairs' do
     expect(max_matching_pairs_after_swap('abcd','adcb')).to eq(4)
   end

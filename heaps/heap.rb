@@ -1,6 +1,7 @@
 class Heap
   attr_reader :data, :comparator
 
+  # convert block passed to a proc via '&'
   def initialize(&comparator)
     @data = []
     @comparator = comparator

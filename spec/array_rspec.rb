@@ -1,4 +1,4 @@
-
+ 
 require_relative '../arrays/signature_cycle'
 require_relative '../arrays/contiguous_subarrays'
 require_relative '../arrays/spiral_array'
@@ -51,7 +51,7 @@ RSpec.describe "Array test" do
   it 'can do cycles' do
     expect(find_signature_counts([2, 1])).to eq([2, 2])
     expect(find_signature_counts([1, 2, 3, 4])).to eq([1, 1, 1, 1])
-    # 3 cycles for each:
+    # 3 cycles for each: (array index starts at 1)
     # 1 passes to 2
     # 2 passes to 3
     # 3 passes to 1

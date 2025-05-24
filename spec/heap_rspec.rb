@@ -4,7 +4,7 @@ require_relative '../heaps/find_median'
 
 
 RSpec.describe "heap test" do
-  it 'finds max product' do	
+  it 'finds max product' do
     expect(find_max_product( [1, 2, 3, 4, 5])).to eq([-1, -1, 6, 24, 60])
     expect(heap_find_max_product( [1, 2, 3, 4, 5])).to eq([-1, -1, 6, 24, 60])
   end
