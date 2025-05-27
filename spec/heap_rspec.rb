@@ -16,7 +16,25 @@ RSpec.describe "heap test" do
 
   it 'finds median' do
     expect(find_median([5, 15, 1, 3])).to eq([5,10,5,4])
-    expect(heap_find_median([5, 15, 1, 3])).to eq([5,10,5,4])
+    result = heap_find_median([5, 15, 1, 3])
+    expect(result[:output]).to eq([5,10,5,4])
+    expect(result[:low_heap].get_data).to eq([3, 1])
+  end
+
+  it 'find larger median with heap' do
+    result = heap_find_median([5, 15, 1, 3, 7, 8, 9, 12, 22, 32, 1, 44, 55])
+    expect(result[:output]).to eq([5, 10, 5, 4, 5, 6, 7, 8, 9, 10, 9, 10, 12])
+    expect(result[:low_heap].get_data).to eq([12, 7, 9, 1, 5, 1, 3])
+    puts '============='
+    puts "   LOW  \n"
+    result[:low_heap].print_tree
+    puts "\n\n==============="
+    puts "    HIGH   \n"
+    result[:high_heap].print_tree
+  end
+
+  it 'has median with verbosity' do
+    result = heap_find_median([5, 15, 1, 3, 7, 8, 9, 12, 22, 32, 1, 44, 55], true)
   end
 
 end

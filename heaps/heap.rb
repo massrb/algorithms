@@ -7,6 +7,10 @@ class Heap
     @comparator = comparator
   end
 
+  def get_data
+    @data
+  end
+
   def size
     @data.size
   end
@@ -30,6 +34,22 @@ class Heap
 
   def peek
     @data[0]
+  end
+
+  def print_tree(index = 0, indent = "", last = true)
+    return if index >= @data.size
+
+    puts "#{indent}#{last ? "└──" : "├──"} #{@data[index]}"
+    indent += last ? "    " : "│   "
+
+    left_index = 2 * index + 1
+    right_index = 2 * index + 2
+
+    has_left = left_index < @data.size
+    has_right = right_index < @data.size
+
+    print_tree(left_index, indent, !has_right) if has_left
+    print_tree(right_index, indent, true) if has_right
   end
 
   private

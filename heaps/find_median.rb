@@ -34,7 +34,7 @@ end
 
 
 
-def heap_find_median(arr)
+def heap_find_median(arr, verbose=false)
   output = []
 
   # Max heap for lower half
@@ -65,7 +65,14 @@ def heap_find_median(arr)
     end
 
     output << median
+    puts "==============="
+    puts "   LOW   \n"
+    low.print_tree
+    puts "\n\n---------------"
+    puts " HIGH  \n"
+    high.print_tree
+    puts "\n================\n"
   end
 
-  output
+  {output: output, low_heap: low, high_heap: high}
 end
