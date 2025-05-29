@@ -7,6 +7,9 @@ class Node
     @data = data
     @left = nil
     @right = nil
+    # depth into tree, root = 0
+    # child of root = 1
+    # grandchild of root = 2 etc
     @level = level
   end
 end
@@ -85,12 +88,25 @@ class BinaryTree
     # puts 'vis:' + node.inspect
     cur = node
     visible_left = [[cur.level, order, node]]
+    # the two calls here will be at the same level
+    # but the order being different will differentiate 
+    # them such that min_by will always get the one on the left.
+    # If the recursive calls go to a deeper level on the right
+    # then those nodes may be included in the leftmost nodes even
+    # though their ancestors might not be included in the leftmost
+    # nodes because the tree might not be balanced.
     visible_left += visible_left_nodes(cur.left, order+1) if cur.left
     visible_left += visible_left_nodes(cur.right, order+2) if cur.right
     if node == @root
       lev = 0
       nodes = []
       done = false
+      # for each level we are only going to get
+      # one node, that is the minimum node
+      # which will coorespond to the leftmost node
+      # for that level. The parent of a leftmost node
+      # parent may not neccessarily be included in the 
+      # collection of leftmost nodes
       while !done
         this_level = visible_left.find_all{|level, order, node| level == lev}
                      .min_by{|level, order, node| [level, order]}
@@ -127,6 +143,35 @@ class BinaryTree
     inorder_traversal(node.left)
     print "#{node.key}:#{node.data} "
     inorder_traversal(node.right)
+  end
+
+  def to_sorted_array(node = @root, array = [])
+    return array if node.nil?
+
+    to_sorted_array(node.left, array)
+    array << node
+    to_sorted_array(node.right, array)
+
+    array
+  end
+
+  # Build a balanced tree from sorted array of nodes
+  def build_balanced_tree(nodes, level = 0)
+    return nil if nodes.empty?
+
+    mid = nodes.length / 2
+    root = Node.new(nodes[mid].key, nodes[mid].data, level)
+    
+    root.left = build_balanced_tree(nodes[0...mid], level + 1)
+    root.right = build_balanced_tree(nodes[mid+1..-1], level + 1)
+
+    root
+  end
+
+  # Balance the tree in-place
+  def balance!
+    sorted_nodes = to_sorted_array
+    @root = build_balanced_tree(sorted_nodes)
   end
 end
 

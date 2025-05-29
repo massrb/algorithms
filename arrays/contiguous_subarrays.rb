@@ -24,24 +24,40 @@ class ContiguousSubarrays
     up_result.zip(down_result).map { |x, y| x + y - 1}
   end
 
+  # as long as the numbers are descending we keep 
+  # pushing their indexes onto the stack
+  #
+  # When a higher number is encountered then 
+  # we clear a portion of the stack
+  # until the stack reflects an index to a higher number
+  # to the left than the current number
+  #
   def self.count_up(arr)
     result = Array.new(arr.length, 1)
     stack = []
     (0...arr.length).each do |i|
       puts "============="
+      puts "ARRAY:#{arr}"
       puts "arr[#{i}]: #{arr[i]}"
       # pop elements that can't be part of current max subarray
       while !stack.empty? && arr[stack[-1]] < arr[i]
         puts "pop (because arr[#{stack[-1]}](#{arr[stack[-1]]}) < arr[#{i}](#{arr[i]}))"
         stack.pop
       end
-      # If stack is empty, current element is greater than all left elements
+      # If stack is empty, current element is 
+      # greater than all left elements
+      # that means there are i + 1 subarrays to the left
       if stack.empty?
         result[i] += i
         puts "the stack is empty so asign - result[#{i}] = #{result[i]}"
       else
-        # Otherwise, it can only extend to the element 
-        # after the last greater/equal element
+        # in this case
+        # the number of subarrays to the left is:
+        # (i + 1) - (index of highest element)
+        # where the index of the highest element is
+        # the most recent higher element to the left
+        # (meaniong it is higher than the current element)
+        # this index is on the stack
         puts "value at top of stack:#{stack[-1]}"
         result[i] += i - stack[-1] - 1
         puts "result[#{i}] = #{result[i]}"
@@ -56,6 +72,11 @@ class ContiguousSubarrays
   end
 
   def self.count_down(arr)
+    res = count_up(arr.reverse)
+    res.reverse
+  end
+
+  def self.old_count_down(arr)
     result = Array.new(arr.length, 1)
     stack = []
     n = arr.length

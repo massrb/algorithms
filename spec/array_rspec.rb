@@ -9,6 +9,7 @@ RSpec.describe "Array test" do
 
   it 'has slices' do
   	expect(input.slice(2,3)).to eq([8,3,9])
+    expect([1, 2, 4, 5, 7, 9][2..-1]).to eq([4, 5, 7, 9])
   end
 
   it 'can insert without flattening' do
@@ -76,7 +77,9 @@ RSpec.describe "Array test" do
     end
 
     it 'has isolated example' do
-      expect(counter.count_up([7, 2, 3, 4, 1, 6, 2])).to eq([1, 1, 2, 3, 1, 5, 1])
+      # from 3 there is [2, 3] + itself = 2
+      # expect(counter.count_up([7, 2, 3, 4, 1, 6, 2])).to eq([1, 1, 2, 3, 1, 5, 1])
+      expect(counter.count_up([5, 2, 7, 2, 3, 4, 1, 6, 2])).to eq([1, 1, 3, 1, 2, 3, 1, 5, 1])
     end
   end
 

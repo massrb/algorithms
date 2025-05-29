@@ -65,13 +65,15 @@ def heap_find_median(arr, verbose=false)
     end
 
     output << median
-    puts "==============="
-    puts "   LOW   \n"
-    low.print_tree
-    puts "\n\n---------------"
-    puts " HIGH  \n"
-    high.print_tree
-    puts "\n================\n"
+    if verbose
+      puts "==============="
+      puts "   LOW   \n"
+      low.print_tree
+      puts "\n\n---------------"
+      puts " HIGH  \n"
+      high.print_tree
+      puts "\n================\n"
+    end
   end
 
   {output: output, low_heap: low, high_heap: high}

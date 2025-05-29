@@ -27,6 +27,10 @@ RSpec.describe "Sort test" do
     tree.print_tree(tree.root)
     puts '------------'
     expect(tree.visible_left_nodes.map{|node| node.key}).to eq([10, 4, 3, 2, 6])
+    puts '---------------------------'
+    puts 'balanced tree'
+    tree.balance!
+    tree.print_tree(tree.root)
   end
 
 end
