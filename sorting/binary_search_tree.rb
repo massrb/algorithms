@@ -84,6 +84,7 @@ class BinaryTree
     puts node.key
   end
 
+=begin
   def visible_left_nodes(node = @root, order=0)
     # puts 'vis:' + node.inspect
     cur = node
@@ -121,6 +122,23 @@ class BinaryTree
     else  
       visible_left
     end  
+  end
+=end
+
+  def visible_left_nodes(node = @root, level = 0, level_map = {})
+    return [] unless node
+
+    # Record the first node we encounter at each level (i.e., the leftmost)
+    level_map[level] ||= node
+
+    # Visit left first to ensure leftmost gets recorded first
+    visible_left_nodes(node.left, level + 1, level_map)
+    visible_left_nodes(node.right, level + 1, level_map)
+
+    # Only return result at root
+    return level_map.values if node == @root
+
+    nil
   end
 
   def print_tree(node, prefix = "", is_left = true)

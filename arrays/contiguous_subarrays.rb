@@ -75,8 +75,9 @@ class ContiguousSubarrays
     res = count_up(arr.reverse)
     res.reverse
   end
-
-  def self.old_count_down(arr)
+  
+=begin
+  def self.count_down(arr)
     result = Array.new(arr.length, 1)
     stack = []
     n = arr.length
@@ -94,5 +95,6 @@ class ContiguousSubarrays
     puts "down result: #{result}"
     result
   end
+=end
 
 end
