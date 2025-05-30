@@ -1,4 +1,5 @@
-
+# counts how many unique pairs of elements in 
+# an array add up to a given target sum. 
 
 def pair_sums(arr, sum)
 	how_many = 0

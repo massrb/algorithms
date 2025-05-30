@@ -8,7 +8,7 @@
 
 def min_length_substring(s,t)
   min = -1
-  for i in 0..(s.length + 1) do
+  for i in 0...s.length do
   	for j in (s.length - 1).downto(i) do
   		substr = s[i..j]
   		found = t.chars.uniq.all? { |c| substr.count(c) == t.count(c) }

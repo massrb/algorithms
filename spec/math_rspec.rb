@@ -13,7 +13,8 @@ RSpec.describe "math test" do
 		expect(factorial(5)).to eq(120)
 
 	end
-
+  # F(0)=0,F(1)=1
+  # F(n)=F(n−1)+F(n−2) for n≥2
 	it 'does fibonacci numbers' do
 		# memoized
     def fib_mem(n, memo = {})
@@ -31,6 +32,7 @@ RSpec.describe "math test" do
 		def fib(n)
 			# (a, b) here is destructures the array passed in
 			# _ represents unused index
+			# Note: ... = exclusive end, remember as being pickier
 			result = (0...n).inject([0, 1]) do |(a, b), _|
 				[b, a + b]
 			end[0]
