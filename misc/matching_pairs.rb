@@ -27,7 +27,7 @@ def max_matching_pairs_after_swap(s, t)
       s_swapped[i], s_swapped[j] = s_swapped[j], s_swapped[i]
 
       # Count matches after the swap
-      matches = (0...n).count { |k| s_swapped[k] == t[k] }
+      matches = (0...n).count { |k| s_swapped[k] == t[k] } ##
 
       max_matches = [max_matches, matches].max
     end

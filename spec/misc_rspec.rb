@@ -40,7 +40,7 @@ RSpec.describe "misc" do
   end
 
   it 'does look and say' do
-    print_look_and_say_seq(10)
+    expect(print_look_and_say_seq(10)).to eq('11131221133112132113212221')
   end
 
 end

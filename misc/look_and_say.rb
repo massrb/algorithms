@@ -26,6 +26,7 @@ def print_look_and_say_seq(count = 0)
     puts val
     val = output_val(val)
   end
+  val
 end
 
 def output_val(input)

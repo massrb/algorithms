@@ -11,7 +11,7 @@ def min_length_substring(s,t)
   for i in 0...s.length do
   	for j in (s.length - 1).downto(i) do
   		substr = s[i..j]
-  		found = t.chars.uniq.all? { |c| substr.count(c) == t.count(c) }
+  		found = t.chars.uniq.all? { |c| substr.count(c) == t.count(c) } ##
   		if found
   			min = substr.length if min < 0
         min = [min, substr.length].min

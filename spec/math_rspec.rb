@@ -25,7 +25,7 @@ RSpec.describe "math test" do
     def fib_iter(n)
   		return n if n <= 1
   		a, b = 0, 1
-  		(2..n).each { a, b = b, a + b }
+  		(2..n).each { a, b = b, a + b } ##
   		b
 		end
 
@@ -33,9 +33,9 @@ RSpec.describe "math test" do
 			# (a, b) here is destructures the array passed in
 			# _ represents unused index
 			# Note: ... = exclusive end, remember as being pickier
-			result = (0...n).inject([0, 1]) do |(a, b), _|
-				[b, a + b]
-			end[0]
+			result = (0...n).inject([0, 1]) do |(a, b), _| ##
+				[b, a + b] ##
+			end[0] ##
 
 			if (result != fib_mem(n) || result != fib_iter(n))
 			  raise "implementation error"
