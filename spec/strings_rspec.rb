@@ -1,5 +1,6 @@
 require_relative '../misc/string_op'
 require_relative '../strings/strings'
+require_relative '../pattern_matching/matcher'
 
 RSpec.describe "string test" do
 
@@ -29,6 +30,15 @@ RSpec.describe "string test" do
 		expect(one_edit_apart("abc", "abc")).to eq(false)
 		expect(one_edit_apart("abc", "axyz")).to eq(false)
 		expect(one_edit_apart("cats", "cat")).to eq(true)
+	end
+
+	it 'does pattern matching' do
+		expect(is_match('aab', 'a*b')).to eq(true)
+		expect(is_match('aabc', 'a*b')).to eq(false)
+		expect(is_match('aabc', 'a*bc')).to eq(true)
+		expect(is_match('aabc', 'a*bc*')).to eq(true)
+		expect(is_match('aabcc', 'a*bc')).to eq(false)
+		expect(is_match('aabcc', 'a*bc*')).to eq(true)
 	end
 
 end

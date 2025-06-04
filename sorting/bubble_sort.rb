@@ -1,3 +1,8 @@
+# generally inefficient for large datasets
+# but a very simple algorithm that sorts in place
+# -  O(1) space complexity
+# It may work for small arrays or those that are almost sorted.
+# It is a simple sort and has educational aspects to it
 
 class BubbleSort < Algorithm
 
@@ -24,10 +29,6 @@ class BubbleSort < Algorithm
 		# or (n-1) + (n-2) + .. + 1 == n*(n-1)/2
     # for every element, it performs comparisons with 
     # almost every other element in the list, thus n^2
-
-    # bubble sort is an in place sort and uses O(1) space complexity
-    # It may work for small arrays or those that are almost sorted.
-    # It is a simple sort and has educational aspects to it
 
 		if first < last
 			done = false

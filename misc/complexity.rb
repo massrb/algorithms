@@ -12,6 +12,68 @@
 # O(n!) - factorial
 #
 
+# logarithmic O(n log n)
+# for merge sort
+# at each of the log₂(n) levels,
+# the algorithm performs O(n) operations, leading to a
+# total time complexity of O(n log₂ n).
+
+def ternary_search(arr, target)
+  # logarithmic
+  # O(log3 n) = O(log n)
+  left, right = 0, arr.length - 1
+
+  while left <= right
+    # Calculate two mid points
+    third = (right - left) / 3
+    mid1 = left + third
+    mid2 = right - third
+
+    # Check if target is at one of the mid points
+    return mid1 if arr[mid1] == target
+    return mid2 if arr[mid2] == target
+
+    # Narrow down the search range
+    if target < arr[mid1]
+      right = mid1 - 1
+    elsif target > arr[mid2]
+      left = mid2 + 1
+    else
+      left = mid1 + 1
+      right = mid2 - 1
+    end
+  end
+
+  -1 # Target not found
+end
+
+def binary_search(arr, target)
+  # logarithmic complexity
+  # O(log n)
+  # Each time through the loop:
+  # You cut the search space in half.
+  # So the number of steps is proportional to log2(n).
+  # For example, with 1,000,000 elements, you'd need only
+  # about 20 comparisons.
+  #
+  # simple example of linearithmic complexity is merge sort
+
+  left = 0
+  right = arr.length - 1
+
+  while left <= right
+    mid = (left + right) / 2
+    return mid if arr[mid] == target
+
+    if arr[mid] < target
+      left = mid + 1
+    else
+      right = mid - 1
+    end
+  end
+
+  nil  # target not found
+end
 
 
 def cmp_linear(n)
@@ -30,7 +92,8 @@ def cmp_quadratic(n)
 end
 
 def ordered_pairs(n)
-	# O(N^2) - N^2/2 (remove constant)
+	# O(N^2)
+  # because for N^2/2 (remove constant)
 	# ordered pairs
 	(0..n).each do |i|
 		(i..n).each do |j|
@@ -52,8 +115,8 @@ end
 
 def bilinear_complexity(a,b)
 	# bilinear complexity
+  # O(A*B)
 	# it is only a quadratic if A and B grow proportionally with each other
-	O(A*B)
 	(0..a).each do |i|
 		(0..b).each do |j|
 			puts "#{i},#{j}"
@@ -83,34 +146,6 @@ def memoized_fib(n, memo={})
     memo[n] = memoized_fib(n - 1, memo) + memoized_fib(n - 2, memo) 		
 	end
 	memo[n]
-end
-
-def binary_search(arr, target)
-	# logarithmic complexity
-	# O(log n)
-	# Each time through the loop:
-  # You cut the search space in half.
-  # So the number of steps is proportional to log₂(n).
-  # For example, with 1,000,000 elements, you'd need only 
-  # about 20 comparisons.
-  # 
-  # simple example of linearithmic complexity is merge sort
-
-  left = 0
-  right = arr.length - 1
-
-  while left <= right
-    mid = (left + right) / 2
-    return mid if arr[mid] == target
-
-    if arr[mid] < target
-      left = mid + 1
-    else
-      right = mid - 1
-    end
-  end
-
-  nil  # target not found
 end
 
 # Example usage:

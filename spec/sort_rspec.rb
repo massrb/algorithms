@@ -49,6 +49,7 @@ RSpec.describe "Sort test" do
   describe "merge sorting" do
     let(:sorter) { MergeSort.new(7) }
     let(:left_array) { [1, 5, 9, 11] }
+    let(:left_array2) { [5, 1, 11, 9] }
     let (:right_array) { [2, 6, 8, 12 ]}
 
     it 'can sort' do
@@ -57,9 +58,15 @@ RSpec.describe "Sort test" do
     end
 
     it 'can merge' do
-      result = sorter.merge(left_array, right_array)
+      result = sorter.merge(left_array, right_array, 0)
       expect(result).to eq([1, 2, 5, 6, 8, 9, 11, 12])
     end
+
+    it 'can merge small arrays' do
+      result = sorter.exec([5, 3, 2, 1])
+      expect(result).to eq([1,2,3,5])
+    end
+
   end
 
   it 'can do a binary search' do

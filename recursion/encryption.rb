@@ -16,8 +16,8 @@ the left of the middle character (if non-empty)
 Append the encrypted version of the substring of S that's to 
 the right of the middle character (if non-empty)
 
-For example, to encrypt the string "abc", we first take "b", and t
-hen append the encrypted version of "a" (which is just "a") and the 
+For example, to encrypt the string "abc", we first take "b", and
+then append the encrypted version of "a" (which is just "a") and the
 encrypted version of "c" (which is just "c") to get "bac".
 If we encrypt "abcxcba" we'll get "xbacbca". That is, we take "x" 
 and then append the encrypted version "abc" and then append the encrypted version of "cba".
