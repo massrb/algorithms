@@ -2,6 +2,8 @@
 require_relative '../arrays/signature_cycle'
 require_relative '../arrays/contiguous_subarrays'
 require_relative '../arrays/spiral_array'
+require_relative '../arrays/partitions'
+require_relative '../arrays/merge_sorted_arrays'
 
 RSpec.describe "Array test" do
   
@@ -90,4 +92,19 @@ RSpec.describe "Array test" do
           [7, 6, 5]])
   end
 
+  it 'can find partitions' do
+    expect(partitions_for([1,3,6,7], 11)).to eq([1,3,7])
+    expect(partitions_for([1,3,6,7,8,10,11], 34)).to eq([8,10,11])
+    expect(partitions_for([1,3,6,7,8,10,11], 19)).to eq([1,7,11])
+  end
+
+  it 'can merge lists' do
+    input = [
+      [1, 4, 5],
+      [1, 3, 4],
+      [2, 6]
+    ].map { |arr| build_linked_list(arr) }
+    merged = merge_k_lists(input)
+    expect(merged.to_a).to eq([1, 1, 2, 3, 4, 4, 5, 6])
+  end
 end
